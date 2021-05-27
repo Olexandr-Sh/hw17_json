@@ -24,5 +24,8 @@ idNumber.occupiedBy = choise;
 alert( JSON.stringify(choise, function replacer(key, value) {
   alert(`${key}: ${value}`);
   return (key == 'occupiedBy') ? undefined : value;
-}));
+}), 2);
+
+let deserialization = JSON.parse(choise);
+console.log(deserialization);
 
