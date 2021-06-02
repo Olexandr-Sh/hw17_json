@@ -97,16 +97,15 @@ fetch(url)
       console.log(userCity);
     })
 
+let url2 = 'https://jsonplaceholder.typicode.com/users/5/posts';
+let xhr2 = new XMLHttpRequest();
+xhr2.open('GET', url2);
 
-// let url2 = 'https://jsonplaceholder.typicode.com/users/1/posts';
-// let xhr2 = new XMLHttpRequest();
-// xhr2.open('GET', url2);
+xhr2.setRequestHeader('Content-Type', 'application/json');
 
-// xhr2.setRequestHeader('Content-Type', 'application/json');
-
-// xhr2.onload = () => {
-//   let data2 = JSON.parse(xhr2.response);
-//   console.log(data2);
-// }
-// xhr2.send();
+xhr2.onload = () => {
+  let data2 = JSON.parse(xhr2.response);
+  console.log(data2);
+}
+xhr2.send();
 
