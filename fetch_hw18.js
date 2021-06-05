@@ -19,60 +19,86 @@ let buttonElement = document.createElement('button');
 body.appendChild(buttonElement);
 buttonElement.style.width = '200px';
 buttonElement.style.height = '60px';
-buttonElement.style.backgroundColor = '#16c062'
+buttonElement.style.backgroundColor = '#16c062';
+buttonElement.style.color = 'white';
+buttonElement.style.fontSize = '26px'; 
+buttonElement.innerHTML = 'BUTTON';
+buttonElement.classList.add('send-button');
+
+createMsg = function () {
+  let messageBlock = document.createElement('div');
+  divElement.appendChild(messageBlock);
+  messageBlock.style.width = '300px';
+  messageBlock.style.height = '100px';
+  messageBlock.style.borderRadius = '20px';
+  messageBlock.style.backgroundColor = 'white';
+};
 
 
-fetch(url)
+buttonElement.onclick = function () {
+  let messageBlock = document.createElement('div');
+  divElement.appendChild(messageBlock);
+  messageBlock.style.width = '300px';
+  messageBlock.style.height = '100px';
+  messageBlock.style.borderRadius = '20px';
+  messageBlock.style.marginBottom = '10px';
+  messageBlock.style.backgroundColor = 'white';
+  messageBlock.style.color = 'black';
+
+  fetch(url)
     .then(res => {
-        if (res.ok) {
-          console.log('SUCCESS')
-        } else {
-          console.log('Not Successful')
-        }
-        return res.json();
+      if (res.ok) {
+        console.log('SUCCESS')
+      } else {
+        console.log('Not Successful')
+      }
+      return res.json();
     })
-    .then(data => console.log(data))
-
-fetch(url)
+    .then(
+      (data) => { messageBlock.textContent = data.join('')}
+      )
+  
+  
+  fetch(url)
     .then(res => {
-        if (res.ok) {
-          console.log('SUCCESS')
-        } else {
-          console.log('Not Successful')
-        }
-        return res.json();
+      if (res.ok) {
+        console.log('SUCCESS')
+      } else {
+        console.log('Not Successful')
+      }
+      return res.json();
     })
     .then(data => {
-        let user = data.find((element) => {
-            return element.name === 'Kurtis Weissnat';
-        })
-        console.log(user);
+      let user = data.find((element) => {
+        return element.name === 'Kurtis Weissnat';
+      })
+      console.log(user);
     })
-
-fetch(url)
+  
+  fetch(url)
     .then(res => {
-        if (res.ok) {
-          console.log('SUCCESS')
-        } else {
-          console.log('Not Successful')
-        }
-        return res.json();
+      if (res.ok) {
+        console.log('SUCCESS')
+      } else {
+        console.log('Not Successful')
+      }
+      return res.json();
     })
     .then(data => {
-    let userCompany = data.filter((cn) => {
-      return cn.company.name === 'Keebler LLC';
-    });
+      let userCompany = data.filter((cn) => {
+        return cn.company.name === 'Keebler LLC';
+      });
       console.log(userCompany);
     })
-
-fetch(url)
+  
+  fetch(url)
     .then(res => {
-        if (res.ok) {
-          console.log('SUCCESS')
-        } else {
-          console.log('Not Successful')
-        }
-        return res.json();
+      if (res.ok) {
+        console.log('SUCCESS')
+      } else {
+        console.log('Not Successful')
+      }
+      return res.json();
     })
     .then(data => {
       let userName = data.filter((letter) => {
@@ -80,15 +106,15 @@ fetch(url)
       });
       console.log(userName);
     })
-
-fetch(url)
+  
+  fetch(url)
     .then(res => {
-        if (res.ok) {
-          console.log('SUCCESS')
-        } else {
-          console.log('Not Successful')
-        }
-        return res.json();
+      if (res.ok) {
+        console.log('SUCCESS')
+      } else {
+        console.log('Not Successful')
+      }
+      return res.json();
     })
     .then(data => {
       let userCity = data.filter((uCity) => {
@@ -96,16 +122,19 @@ fetch(url)
       });
       console.log(userCity);
     })
+  
+  let url2 = 'https://jsonplaceholder.typicode.com/users/5/posts';
+  let xhr2 = new XMLHttpRequest();
+  xhr2.open('GET', url2);
 
-let url2 = 'https://jsonplaceholder.typicode.com/users/5/posts';
-let xhr2 = new XMLHttpRequest();
-xhr2.open('GET', url2);
+  xhr2.setRequestHeader('Content-Type', 'application/json');
 
-xhr2.setRequestHeader('Content-Type', 'application/json');
-
-xhr2.onload = () => {
-  let data2 = JSON.parse(xhr2.response);
-  console.log(data2);
+  xhr2.onload = () => {
+    let data2 = JSON.parse(xhr2.response);
+    console.log(data2);
+  }
+  xhr2.send();
 }
-xhr2.send();
+
+
 
